@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fuzmo archetypes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; height: 560px; box-sizing: border-box; padding: 64px; background: #120C1A; color: #F4EEFF; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.1">One body, seven personalities</h2>
+<p style="margin: 0; font-size: 17px; color: #B7A8CC">Archetypes come from a week of behaviour. They change the face, the antenna and the props, never the silhouette.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px">
+<div style="background: #1E1529; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 100%; height: 170px"><dc-import name="Fuzmo" mood="sleepy" hint-size="100%,170px"></dc-import></div>
+<strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px">Sleepy</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #B7A8CC">Lots of night use. Yawns mid-sentence.</p>
+</div>
+<div style="background: #1E1529; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 100%; height: 170px"><dc-import name="Fuzmo" mood="gremlin" hint-size="100%,170px"></dc-import></div>
+<strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px">Gremlin</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #B7A8CC">Hops between apps. Steals its own snacks.</p>
+</div>
+<div style="background: #1E1529; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 100%; height: 170px"><dc-import name="Fuzmo" mood="drama" hint-size="100%,170px"></dc-import></div>
+<strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px">Drama Queen</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #B7A8CC">Big daily swings. Faints at minor setbacks.</p>
+</div>
+<div style="background: #1E1529; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 100%; height: 170px"><dc-import name="Fuzmo" mood="genius" hint-size="100%,170px"></dc-import></div>
+<strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px">Genius</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #B7A8CC">Reads and focuses. Corrects your grammar.</p>
+</div>
+<div style="background: #1E1529; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 100%; height: 170px"><dc-import name="Fuzmo" mood="rotted" hint-size="100%,170px"></dc-import></div>
+<strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px">Zombie</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #B7A8CC">Three cooked days in a row. Bulb dark.</p>
+</div>
+<div style="background: #1E1529; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 100%; height: 170px"><dc-import name="Fuzmo" mood="unhinged" hint-size="100%,170px"></dc-import></div>
+<strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px">Unhinged</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #B7A8CC">Late nights plus chaos. Screams at nothing.</p>
+</div>
+<div style="background: #2A1E3A; border: 2px solid #FFC83D; border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 100%; height: 170px"><dc-import name="Fuzmo" mood="legendary" hint-size="100%,170px"></dc-import></div>
+<strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px; color: #FFE45C">Legendary</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.45; color: #D9CDEA">30 balanced days plus luck. Can't be bought.</p>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

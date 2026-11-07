@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fuzmo at small sizes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; height: 560px; box-sizing: border-box; padding: 64px; background: #120C1A; color: #F4EEFF; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.1">Readable at every size</h2>
+<p style="margin: 0; font-size: 17px; color: #B7A8CC">The silhouette test the fuzzy concept fails: fill him in solid black and he is still Fuzmo.</p>
+</div>
+<div style="display: grid; grid-template-columns: 300px minmax(0, 1fr) 360px; gap: 24px; flex-grow: 1">
+<div style="background: #EDE6F7; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px">
+<div style="width: 200px; height: 220px"><dc-import name="Fuzmo" mood="silhouette" hint-size="200px,220px"></dc-import></div>
+<span style="font-size: 14px; font-weight: 600; color: #2A0F4D">Silhouette test</span>
+</div>
+<div style="background: #1E1529; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 14px; font-weight: 600; color: #D9CDEA">Home-screen widgets</span>
+<div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap">
+<div style="width: 172px; height: 172px; border-radius: 32px; background: #2B1F3B; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+<div style="width: 112px; height: 124px"><dc-import name="Fuzmo" mood="foggy" hint-size="112px,124px"></dc-import></div>
+<span style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 15px">Foggy · 47</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="width: 340px; height: 84px; border-radius: 28px; background: #2B1F3B; display: flex; align-items: center; gap: 12px; padding: 0 16px; box-sizing: border-box">
+<div style="flex: none; width: 60px; height: 66px"><dc-import name="Fuzmo" mood="cooked" hint-size="60px,66px"></dc-import></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 16px">Cooked</strong><span style="font-size: 13px; color: #D9CDEA">We need to talk about last night.</span></div>
+</div>
+<div style="width: 340px; height: 84px; border-radius: 28px; background: #2B1F3B; display: flex; align-items: center; gap: 12px; padding: 0 16px; box-sizing: border-box">
+<div style="flex: none; width: 60px; height: 66px"><dc-import name="Fuzmo" mood="sharp" hint-size="60px,66px"></dc-import></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 16px">Sharp</strong><span style="font-size: 13px; color: #D9CDEA">Three hours offline. Who are you?</span></div>
+</div>
+</div>
+</div>
+</div>
+<div style="background: #1E1529; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 14px; font-weight: 600; color: #D9CDEA">App icon at 96, 48 and 24 px</span>
+<div style="display: flex; align-items: flex-end; gap: 28px; flex-grow: 1">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+<div style="width: 96px; height: 96px; border-radius: 24px; background: #FFE45C; display: flex; align-items: flex-end; justify-content: center; overflow: hidden"><div style="width: 84px; height: 92px; margin-bottom: -6px"><dc-import name="Fuzmo" mood="sharp" hint-size="84px,92px"></dc-import></div></div>
+<span style="font-size: 12px; color: #B7A8CC">96</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #FFE45C; display: flex; align-items: flex-end; justify-content: center; overflow: hidden"><div style="width: 42px; height: 46px; margin-bottom: -3px"><dc-import name="Fuzmo" mood="sharp" hint-size="42px,46px"></dc-import></div></div>
+<span style="font-size: 12px; color: #B7A8CC">48</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: #FFE45C; display: flex; align-items: flex-end; justify-content: center; overflow: hidden"><div style="width: 21px; height: 23px; margin-bottom: -2px"><dc-import name="Fuzmo" mood="sharp" hint-size="21px,23px"></dc-import></div></div>
+<span style="font-size: 12px; color: #B7A8CC">24</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

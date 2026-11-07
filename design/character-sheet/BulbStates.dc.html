@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brainrot bulb states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; height: 600px; box-sizing: border-box; padding: 64px; background: #120C1A; color: #F4EEFF; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.1">The bulb is the brainrot meter</h2>
+<p style="margin: 0; font-size: 17px; color: #B7A8CC">Five bands, readable at a glance. The home screen needs no progress bar.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px">
+<div style="background: #1E1529; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 100%; height: 220px"><dc-import name="Fuzmo" mood="sharp" hint-size="100%,220px"></dc-import></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 24px">Sharp</strong><span style="font-size: 13px; color: #B7A8CC">0–20</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #D9CDEA">“I feel like I could learn Latin today.”</p>
+</div>
+<div style="background: #1E1529; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 100%; height: 220px"><dc-import name="Fuzmo" mood="fine" hint-size="100%,220px"></dc-import></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 24px">Fine</strong><span style="font-size: 13px; color: #B7A8CC">21–40</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #D9CDEA">“A reasonable day. Suspiciously reasonable.”</p>
+</div>
+<div style="background: #1E1529; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 100%; height: 220px"><dc-import name="Fuzmo" mood="foggy" hint-size="100%,220px"></dc-import></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 24px">Foggy</strong><span style="font-size: 13px; color: #B7A8CC">41–60</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #D9CDEA">“What were we doing? Oh. Scrolling.”</p>
+</div>
+<div style="background: #1E1529; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 100%; height: 220px"><dc-import name="Fuzmo" mood="cooked" hint-size="100%,220px"></dc-import></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 24px">Cooked</strong><span style="font-size: 13px; color: #B7A8CC">61–80</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #D9CDEA">“We watched 212 videos. I remember none of them.”</p>
+</div>
+<div style="background: #1E1529; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 100%; height: 220px"><dc-import name="Fuzmo" mood="rotted" hint-size="100%,220px"></dc-import></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><strong style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 24px">Fully Rotted</strong><span style="font-size: 13px; color: #B7A8CC">81–100</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #D9CDEA">“Brain cells remaining: 3. Two are arguing.”</p>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
