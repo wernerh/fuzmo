@@ -16,7 +16,24 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 
 Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone. The repo is `wernerh/fuzmo`.
 
-The factory's environment has `gh` 2.89, older than 2.94: use the `gh api` fallbacks above for sub-issues and blocking edges, not `--parent` / `--blocked-by`. Every comment the factory posts starts with `<!-- fuzmo-factory -->` (see `docs/factory/FACTORY.md`).
+Every comment the factory posts starts with `<!-- fuzmo-factory -->` (see `docs/factory/FACTORY.md`).
+
+## In factory sessions: REST only
+
+Claude Code sessions block GitHub GraphQL, and `gh issue create`, `gh issue list`, `gh pr create`, `gh issue view --json`, `gh issue pin` and `gh pr view --json` all use GraphQL. In factory runs, **use `gh api` against the REST API instead of the conveniences above**:
+
+- Create an issue: `gh api repos/wernerh/fuzmo/issues -f title="…" -f body="$BODY" -f 'labels[]=ready-for-agent'`
+- Read an issue: `gh api repos/wernerh/fuzmo/issues/<n>`, and its comments: `gh api repos/wernerh/fuzmo/issues/<n>/comments --paginate`
+- List issues: `gh api 'repos/wernerh/fuzmo/issues?state=open&labels=ready-for-agent&per_page=100' --paginate` (this also returns PRs; drop items with a `pull_request` key)
+- Comment: `gh api repos/wernerh/fuzmo/issues/<n>/comments -f body="$BODY"`
+- Labels: `gh api repos/wernerh/fuzmo/issues/<n>/labels -f 'labels[]=needs-info'`; remove with `gh api -X DELETE repos/wernerh/fuzmo/issues/<n>/labels/<name>`
+- Close: `gh api -X PATCH repos/wernerh/fuzmo/issues/<n> -f state=closed`
+- Sub-issues and blocking edges: the `gh api` forms in **Conventions** above (they are REST)
+- Open a PR: `gh api repos/wernerh/fuzmo/pulls -f title="…" -f head="<branch>" -f base=main -f body="$BODY"`, then add the `factory:pr` label through the issues labels endpoint and request review with `gh api repos/wernerh/fuzmo/pulls/<n>/requested_reviewers -f 'reviewers[]=wernerh'` (it may refuse a self-review request; that is fine)
+- PR reviews and comments: `gh api repos/wernerh/fuzmo/pulls/<n>/reviews`, `…/pulls/<n>/comments`, and for review threads the session's CCR route `GET repos/wernerh/fuzmo/pulls/<n>/ccr/review_threads`
+- CI status: `gh api repos/wernerh/fuzmo/commits/<sha>/check-runs`
+
+Pinning issues needs GraphQL, so the factory log is not pinned; find it with the `factory:log` label.
 
 File issues only into the user's own repo. Never file into `mattpocock/skills` (the repo these skills come from) unless the user owns it. In a fork, `gh` can default to the upstream parent, so before the first `gh issue create` of a session, check the target with `gh repo view --json nameWithOwner` and confirm it with the user if it is not their repo.
 

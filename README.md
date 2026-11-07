@@ -27,7 +27,7 @@ An hourly scheduled Claude run walks Matt Pocock's skill chain, one step per run
 4. **Implement:** one ticket per run, test-first, as a `factory:pr` pull request. Review and merge it.
 5. **Retro:** every 5 merged PRs, a `factory:retro` PR improves the process.
 
-Progress is logged on the pinned `factory:log` issue. To stop everything, add a `PAUSE` file to `main` or put the `factory:pause` label on any open issue.
+Progress is logged on [the factory log issue](https://github.com/wernerh/fuzmo/issues/1). To stop everything, add a `PAUSE` file to `main` or put the `factory:pause` label on any open issue.
 
 ## Credits
 

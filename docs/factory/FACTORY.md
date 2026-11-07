@@ -56,6 +56,7 @@ A step that is waiting on the owner never blocks a later independent step. For e
 
 - Branch `factory/<issue-number>-<slug>` from the latest `main`.
 - Red-green-refactor at the seams named in the spec. Run the module's tests often and the full suite at the end.
+- **Builds in the cloud session:** the session's network may block Gradle and Maven hosts (`services.gradle.org`, `repo.maven.apache.org`, `maven.google.com`, `plugins.gradle.org`), and there is no Android SDK. Try `./gradlew :engine:test` first. If dependency downloads are refused (HTTP 403), use GitHub Actions as the test runner: push the branch, poll `gh api repos/wernerh/fuzmo/commits/<sha>/check-runs` every 2 minutes for up to 25 minutes, and read failing job logs with `gh api repos/wernerh/fuzmo/actions/jobs/<id>/logs`. Batch several red-green cycles per push to save time. Never leave a PR on red CI at the end of a run without a comment saying what is failing.
 - Run `code-review` on the diff and fix what it finds.
 - Open a PR using the `pr` skill's body shape, with `Closes #<n>`, label `factory:pr`, and the owner as reviewer. **Never merge.**
 - If a ticket turns out to be under-specified, comment on it, swap `ready-for-agent` for `needs-info` and pick nothing else this run.
@@ -67,7 +68,7 @@ A step that is waiting on the owner never blocks a later independent step. For e
 
 ## Logging
 
-Every run that does a step appends one comment to the pinned issue labelled `factory:log`: the time, the step, and links to what it touched. Every comment the factory posts starts with the marker line `<!-- fuzmo-factory -->`. A comment without that marker counts as the owner's.
+Every run that does a step appends one comment to the issue labelled `factory:log` (#1): the time, the step, and links to what it touched. Every comment the factory posts starts with the marker line `<!-- fuzmo-factory -->`. A comment without that marker counts as the owner's.
 
 ## Labels
 
@@ -78,7 +79,7 @@ Every run that does a step appends one comment to the pinned issue labelled `fac
 | `factory:pr` | A PR opened by the factory |
 | `factory:docs` | A PR carrying glossary, ADR or brief updates from a grill round |
 | `factory:retro` | A retro PR |
-| `factory:log` | The pinned run log |
+| `factory:log` | The run log issue (#1) |
 | `factory:pause` | On any open issue: the factory does nothing |
 | `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix` | The skills' triage roles |
 
