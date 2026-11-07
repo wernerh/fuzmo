@@ -15,7 +15,7 @@ The glowing tip of Fuzmo's antenna; its brightness and posture show how rested h
 _Avoid_: brain bulb, meter, light
 
 **Form**:
-A lasting variant of Fuzmo earned by a run of nights: Sleepy (default), Zombie, Legendary Sleeper. The night's mood is always shown on top of the form.
+A lasting variant of Fuzmo earned by a run of nights: Sleepy (default), Zombie, Legendary Sleeper. Legendary Sleeper is permanent once earned; Zombie is temporary and covers any form while it lasts. The night's mood is always shown on top of the form.
 _Avoid_: evolution, skin, archetype
 
 **Mood**:
@@ -38,7 +38,10 @@ A Friday or Saturday night; it uses the user's weekend bedtime target and wake t
 One evening-to-morning period, named after the date of the evening it starts (Tuesday's night runs into Wednesday morning).
 
 **Night window**:
-The part of a night Fuzmo looks at: from three hours before the bedtime target until the wake time.
+The part of a night Fuzmo looks at: from three hours before the bedtime target until the wake time, in the time zone in force when it starts.
+
+**Night event**:
+One thing the phone reported during a night: screen off, screen on, unlock, app opened or closed, or a gn tap.
 
 **Phone-down time**:
 When the first screen-off stretch of at least 60 minutes in the night window began; peeks and the screen lighting up without an unlock do not break a stretch.
@@ -84,10 +87,13 @@ The first screen of the day: Fuzmo's mood, phone-down time against target, wake-
 _Avoid_: report, summary
 
 **Streak**:
-Consecutive nights with phone-down time at or before the bedtime target.
+Consecutive nights with phone-down time no more than 10 minutes after the bedtime target.
+
+**Recovery**:
+Last night's Rest beating the mean Rest of the seven recorded nights before it; needs at least three recorded nights. The morning recap leads with it.
 
 **Freeze**:
-A spare that keeps the streak alive through a missed or unrecorded night; two a week.
+A spare that keeps the streak alive through a missed or unrecorded night; two per Monday-to-Sunday week, used automatically and not carried over.
 
 **Roast line**:
 The one affectionate, teasing sentence Fuzmo says in the morning recap.

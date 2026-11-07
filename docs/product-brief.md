@@ -23,16 +23,22 @@ Half of adults scroll in bed instead of sleeping, and they defend that late-nigh
 
 - **Night window:** from 3 hours before the bedtime target until the wake time. A night is named after the date of the evening it starts.
 - **Phone-down time:** the start of the first screen-off stretch of at least 60 minutes in the night window (see ADR-0006). Peeks and screen-on without an unlock do not break a stretch. No such stretch means an **unrecorded night**: no Rest, and the streak uses a freeze if one is left.
-- **Unlocks only:** the screen lighting up without an unlock (alarms, notifications, checking the clock) never counts. Unlocks in the last 30 minutes before the wake time are ignored.
+- **Unlocks only:** the screen lighting up without an unlock (alarms, notifications, checking the clock) never counts. Unlocks in the last 30 minutes before the wake time are ignored. On phones with no lock screen, a screen-on with 2+ minutes of any app in the foreground counts as an unlock.
+- **Time:** a night uses the time zone in force when its night window starts; all durations are real elapsed minutes, so DST nights are never an hour off.
+- **Targets:** the wake time must be 4 to 14 hours after the bedtime target; targets may cross midnight.
 - **Late scrolling:** only apps on a fixed list shipped with the app (TikTok, Instagram, YouTube, Facebook, X, Reddit, Snapchat, Threads, Pinterest and a few regional ones) count; no user editing in v1. Package names never leave the device.
 
 `Rest = 100 − min(60, 0.5·O) − min(30, 10·W) − min(10, S/6)`
 
 - `O`: minutes of overrun past the bedtime target (0 if earlier)
 - `W`: wake-ups (unlocks with 2+ minutes of use after phone-down; shorter unlocks are peeks and cost nothing)
-- `S`: minutes of late scrolling
+- `S`: minutes of late scrolling, including during wake-ups
 
-Bands (the five moods): 85–100 Sharp, 70–84 Fine, 50–69 Foggy, 30–49 Cooked, under 30 Fully Rotted. The mood is always shown on top of the current form (Legendary Sleeper can look Foggy). Three Fully Rotted nights in a row make Fuzmo a Zombie; one night at 70+ brings him back. A 14-night streak at or before target unlocks the Legendary Sleeper form. Streaks have 2 free freezes a week. Fuzmo never gets sick and never dies.
+Bands (the five moods): 85–100 Sharp, 70–84 Fine, 50–69 Foggy, 30–49 Cooked, under 30 Fully Rotted. The mood is always shown on top of the current form (Legendary Sleeper can look Foggy). Three Fully Rotted nights in a row make Fuzmo a Zombie; one night at 70+ brings him back. Unrecorded nights neither break nor extend that run. A 14-night streak unlocks the Legendary Sleeper form, which is permanent; Zombie covers it while it lasts.
+
+The streak allows a 10-minute grace after the bedtime target (Rest still counts every minute). Two freezes per Monday-to-Sunday week, used automatically on the first missed or unrecorded nights, not carried over.
+
+Recovery leads the recap when last night's Rest beats the mean of the seven recorded nights before it (at least three needed). Fuzmo never gets sick and never dies.
 
 ## MVP scope
 
@@ -50,7 +56,7 @@ PostHog EU, added only when the app UI is built. Events only: install, onboardin
 
 ## Build order
 
-Until the owner reports that the concierge test passed (on the grill or spec issue), the factory builds only the walking skeleton and the pure-Kotlin `engine` (night model, Rest bands, streak, freezes, forms), driven by simulator tests of synthetic nights. No app UI or Android permission code before that.
+Until the owner reports that the concierge test passed (on the grill or spec issue), the factory builds only the walking skeleton and the pure-Kotlin `engine` (night model, Rest bands, streak, freezes, forms), driven by simulator tests of synthetic nights. No app UI or Android permission code before that. Spec 1 is the night engine; roast lines get their own spec later. The engine takes night events and derives every rule itself (ADR-0002).
 
 ## Money
 
@@ -63,4 +69,4 @@ Free nightly loop forever. Fuzmo Plus: $3.99/month, $29.99/year or $49.99 lifeti
 
 ## Open questions for the grill
 
-Round 1 of the grill (#2) settled the build order, the phone-down rule, the night window, alarms, the late-scrolling list, weekend targets, gn mode, the tuck-in bonus, moods vs forms, the art format and analytics. Open questions move to the grill issue from here on.
+Rounds 1 and 2 of the grill (#2) settled the night engine's edges, and round 1 the build order, the phone-down rule, the night window, alarms, the late-scrolling list, weekend targets, gn mode, the tuck-in bonus, moods vs forms, the art format and analytics. Open questions move to the grill issue from here on.
